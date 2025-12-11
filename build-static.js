@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 
 // Create dist directory
-const distDir = path.join(__dirname, 'dist');
+const distDir = path.join(__dirname, 'docs');
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
