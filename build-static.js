@@ -114,8 +114,8 @@ console.log('🚀 Building static site...\n');
 // Copy assets first
 copyAssets();
 
-// Base URL for GitHub Pages (will be /gypsy-service-dog-training)
-const baseUrl = '/gypsy-service-dog-training';
+// Base URL - use relative paths (.) for GitHub Pages
+const baseUrl = '.';
 
 // Render main pages
 renderPage(
