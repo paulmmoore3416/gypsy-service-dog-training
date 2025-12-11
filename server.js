@@ -52,6 +52,7 @@ function writeData(data) {
 // Routes
 app.get('/', (req, res) => {
   res.render('index', {
+    baseUrl: "",
     page: 'dashboard',
     data: readData(),
     baseUrl: ''
@@ -61,6 +62,7 @@ app.get('/', (req, res) => {
 app.get('/guide/:section', (req, res) => {
   const section = req.params.section;
   res.render('guide', {
+    baseUrl: "",
     page: 'guide',
     section: section,
     data: readData()
@@ -69,6 +71,7 @@ app.get('/guide/:section', (req, res) => {
 
 app.get('/training-log', (req, res) => {
   res.render('training-log', {
+    baseUrl: "",
     page: 'training-log',
     data: readData()
   });
@@ -76,6 +79,7 @@ app.get('/training-log', (req, res) => {
 
 app.get('/tasks', (req, res) => {
   res.render('tasks', {
+    baseUrl: "",
     page: 'tasks',
     data: readData()
   });
@@ -83,6 +87,7 @@ app.get('/tasks', (req, res) => {
 
 app.get('/milestones', (req, res) => {
   res.render('milestones', {
+    baseUrl: "",
     page: 'milestones',
     data: readData()
   });
@@ -90,6 +95,7 @@ app.get('/milestones', (req, res) => {
 
 app.get('/resources', (req, res) => {
   res.render('resources', {
+    baseUrl: "",
     page: 'resources',
     data: readData()
   });
@@ -97,6 +103,7 @@ app.get('/resources', (req, res) => {
 
 app.get('/analytics', (req, res) => {
   res.render('analytics', {
+    baseUrl: "",
     page: 'analytics',
     data: readData()
   });
@@ -104,6 +111,7 @@ app.get('/analytics', (req, res) => {
 
 app.get('/certificates', (req, res) => {
   res.render('certificates', {
+    baseUrl: "",
     page: 'certificates',
     data: readData()
   });
