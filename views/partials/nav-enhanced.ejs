@@ -1,49 +1,55 @@
+<%
+  // Determine if we're in static mode (has baseUrl and it's not empty string)
+  const isStatic = typeof baseUrl !== 'undefined' && baseUrl !== '';
+  const ext = isStatic ? '.html' : '';
+  const prefix = isStatic ? baseUrl : '';
+%>
 <nav class="main-nav">
   <ul class="nav-list">
     <li class="nav-item <%= page === 'dashboard' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/index.html">
+      <a href="<%= prefix %>/<%= isStatic ? 'index.html' : '' %>">
         <span class="nav-icon">🏠</span>
         <span>Dashboard</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'guide' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/guide/introduction.html">
+      <a href="<%= prefix %>/guide/introduction<%= ext %>">
         <span class="nav-icon">📖</span>
         <span>Training Guide</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'training-log' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/training-log.html">
+      <a href="<%= prefix %>/training-log<%= ext %>">
         <span class="nav-icon">📝</span>
         <span>Training Logs</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'tasks' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/tasks.html">
+      <a href="<%= prefix %>/tasks<%= ext %>">
         <span class="nav-icon">✅</span>
         <span>Tasks</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'milestones' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/milestones.html">
+      <a href="<%= prefix %>/milestones<%= ext %>">
         <span class="nav-icon">🎯</span>
         <span>Milestones</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'analytics' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/analytics.html">
+      <a href="<%= prefix %>/analytics<%= ext %>">
         <span class="nav-icon">📊</span>
         <span>Analytics</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'certificates' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/certificates.html">
+      <a href="<%= prefix %>/certificates<%= ext %>">
         <span class="nav-icon">🏆</span>
         <span>Certificates</span>
       </a>
     </li>
     <li class="nav-item <%= page === 'resources' ? 'active' : '' %>">
-      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/resources.html">
+      <a href="<%= prefix %>/resources<%= ext %>">
         <span class="nav-icon">🔗</span>
         <span>Resources</span>
       </a>

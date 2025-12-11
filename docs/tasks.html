@@ -15,12 +15,13 @@
     </div>
     <div class="header-info">
       <span class="veteran-badge">🇺🇸 Marine Corps Veteran</span>
-      <span class="date">Wednesday, December 10, 2025</span>
+      <span class="date">Thursday, December 11, 2025</span>
     </div>
   </div>
 </header>
 
-  <nav class="main-nav">
+  
+<nav class="main-nav">
   <ul class="nav-list">
     <li class="nav-item ">
       <a href="./index.html">
@@ -126,10 +127,74 @@
 
     <div class="tasks-grid">
       
-        <div class="empty-state">
-          <p>🎯 No tasks yet!</p>
-          <p>Add tasks that Gypsy needs to learn to become your service dog.</p>
-        </div>
+        
+          
+          
+            <div class="task-column">
+              <h2 class="column-header not-started">
+                
+                  📋 Not Started
+                
+                <span class="task-count">(1)</span>
+              </h2>
+
+              
+                <div class="task-card" data-task-id="1765461590209">
+                  <div class="task-header">
+                    <h3>Start working with gypsy</h3>
+                    <span class="difficulty-badge low">Low</span>
+                  </div>
+
+                  
+                    <p class="task-description">start small with gentle voice commands </p>
+                  
+
+                  <div class="task-progress">
+                    <label>Progress: 0%</label>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <input type="range" min="0" max="100" value="0"
+                           onchange="updateTaskProgress(1765461590209, this.value)"
+                           class="progress-slider">
+                  </div>
+
+                  
+                    <p class="task-meta">Started: 12/10/2025</p>
+                  
+
+                  
+
+                  <div class="task-actions">
+                    <select onchange="updateTaskStatus(1765461590209, this.value)" class="status-select">
+                      <option value="not-started" selected>Not Started</option>
+                      <option value="in-progress" >In Progress</option>
+                      <option value="completed" >Completed</option>
+                    </select>
+                    <button class="btn-icon" onclick="deleteTask(1765461590209)" title="Delete Task">🗑️</button>
+                  </div>
+                </div>
+              
+            </div>
+          
+        
+          
+          
+            <div class="task-column">
+              <h2 class="column-header in-progress">
+                
+                  🔄 In Progress
+                
+                <span class="task-count">(0)</span>
+              </h2>
+
+              
+            </div>
+          
+        
+          
+          
+        
       
     </div>
 
