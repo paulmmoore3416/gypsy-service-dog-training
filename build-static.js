@@ -9,12 +9,18 @@ if (!fs.existsSync(distDir)) {
 }
 
 // Read training data
-const dataPath = path.join(__dirname, 'training-data.json');
+const dataPath = path.join(__dirname, 'data', 'training-data.json');
 let data = {
   trainingLogs: [],
   weeklyReports: [],
   tasks: [],
-  milestones: {}
+  milestones: [],
+  progressData: {
+    foundationPhase: 0,
+    advancedObedience: 0,
+    taskTraining: 0,
+    publicAccess: 0
+  }
 };
 
 if (fs.existsSync(dataPath)) {

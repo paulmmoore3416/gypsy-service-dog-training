@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Analytics - Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="main-header">
+  <div class="header-content">
+    <div class="logo">
+      <span class="logo-icon">🐕‍🦺</span>
+      <span class="logo-text">Gypsy Training</span>
+    </div>
+    <div class="header-info">
+      <span class="veteran-badge">🇺🇸 Marine Corps Veteran</span>
+      <span class="date">Wednesday, December 10, 2025</span>
+    </div>
+  </div>
+</header>
+
+  <nav class="main-nav">
+  <ul class="nav-list">
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/index.html">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/guide/introduction.html">
+        <span class="nav-icon">📖</span>
+        <span>Training Guide</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/training-log.html">
+        <span class="nav-icon">📝</span>
+        <span>Training Logs</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/tasks.html">
+        <span class="nav-icon">✅</span>
+        <span>Tasks</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/milestones.html">
+        <span class="nav-icon">🎯</span>
+        <span>Milestones</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a href="/gypsy-service-dog-training/analytics.html">
+        <span class="nav-icon">📊</span>
+        <span>Analytics</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/certificates.html">
+        <span class="nav-icon">🏆</span>
+        <span>Certificates</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/resources.html">
+        <span class="nav-icon">🔗</span>
+        <span>Resources</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+  <main class="container">
+    <h1>📊 Training Analytics</h1>
+    <p class="subtitle">Visual insights into Gypsy's progress</p>
+
+    <div class="analytics-grid">
+      <!-- Progress Chart -->
+      <section class="chart-card full-width">
+        <h2>Training Phase Progress</h2>
+        <canvas id="progressChart"></canvas>
+      </section>
+
+      <!-- Training Hours Chart -->
+      <section class="chart-card">
+        <h2>Weekly Training Hours</h2>
+        <canvas id="hoursChart"></canvas>
+      </section>
+
+      <!-- Success Rate Chart -->
+      <section class="chart-card">
+        <h2>Task Success Rates</h2>
+        <canvas id="successChart"></canvas>
+      </section>
+
+      <!-- Activity Heatmap -->
+      <section class="chart-card full-width">
+        <h2>Training Activity Calendar</h2>
+        <div id="activityCalendar"></div>
+      </section>
+
+      <!-- Stats Summary -->
+      <section class="stats-summary">
+        <h2>Summary Statistics</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-icon">📅</div>
+            <div class="summary-data">
+              <div class="summary-number" id="total-days">0</div>
+              <div class="summary-label">Days Training</div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">⏱️</div>
+            <div class="summary-data">
+              <div class="summary-number" id="total-hours">0</div>
+              <div class="summary-label">Total Hours</div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">📈</div>
+            <div class="summary-data">
+              <div class="summary-number" id="avg-success">0%</div>
+              <div class="summary-label">Avg Success Rate</div>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">🎯</div>
+            <div class="summary-data">
+              <div class="summary-number" id="tasks-completed">0</div>
+              <div class="summary-label">Tasks Completed</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Export Options -->
+    <section class="export-section">
+      <h2>Export Analytics</h2>
+      <div class="export-buttons">
+        <button class="btn btn-primary" onclick="exportToPDF()">📄 Export to PDF</button>
+        <button class="btn btn-secondary" onclick="exportToCSV()">📊 Export to CSV</button>
+        <button class="btn btn-secondary" onclick="printCharts()">🖨️ Print Charts</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Gypsy Service Dog Training | Personal Training Tracker</p>
+    <p class="footer-tagline">Semper Fi • Building an exceptional service dog team 🐕‍🦺</p>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script>
+    // Initialize charts with data
+    const data = {"trainingLogs":[],"tasks":[],"milestones":[],"weeklyReports":[],"progressData":{"foundationPhase":0,"advancedObedience":0,"taskTraining":0,"publicAccess":0}};
+    initializeAnalytics(data);
+  </script>
+</body>
+</html>

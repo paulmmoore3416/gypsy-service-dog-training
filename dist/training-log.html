@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Logs - Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="main-header">
+  <div class="header-content">
+    <div class="logo">
+      <span class="logo-icon">🐕‍🦺</span>
+      <span class="logo-text">Gypsy Training</span>
+    </div>
+    <div class="header-info">
+      <span class="veteran-badge">🇺🇸 Marine Corps Veteran</span>
+      <span class="date">Wednesday, December 10, 2025</span>
+    </div>
+  </div>
+</header>
+
+  <nav class="main-nav">
+  <ul class="nav-list">
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/index.html">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/guide/introduction.html">
+        <span class="nav-icon">📖</span>
+        <span>Training Guide</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a href="/gypsy-service-dog-training/training-log.html">
+        <span class="nav-icon">📝</span>
+        <span>Training Logs</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/tasks.html">
+        <span class="nav-icon">✅</span>
+        <span>Tasks</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/milestones.html">
+        <span class="nav-icon">🎯</span>
+        <span>Milestones</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/analytics.html">
+        <span class="nav-icon">📊</span>
+        <span>Analytics</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/certificates.html">
+        <span class="nav-icon">🏆</span>
+        <span>Certificates</span>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a href="/gypsy-service-dog-training/resources.html">
+        <span class="nav-icon">🔗</span>
+        <span>Resources</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+  <main class="container">
+    <h1>📝 Training Logs</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="daily">Daily Logs</button>
+      <button class="tab-btn" data-tab="weekly">Weekly Reports</button>
+      <button class="tab-btn" data-tab="add">Add New Log</button>
+    </div>
+
+    <div class="tab-content active" id="daily-tab">
+      <h2>Daily Training Sessions</h2>
+      
+        <div class="empty-state">
+          <p>📋 No training logs yet!</p>
+          <p>Click "Add New Log" to start tracking Gypsy's training sessions.</p>
+        </div>
+      
+    </div>
+
+    <div class="tab-content" id="weekly-tab">
+      <h2>Weekly Progress Reports</h2>
+      
+        <div class="empty-state">
+          <p>📊 No weekly reports yet!</p>
+          <p>Complete your first week of training to add a weekly summary.</p>
+        </div>
+      
+      <button class="btn btn-primary" onclick="showWeeklyReportForm()">Add Weekly Report</button>
+    </div>
+
+    <div class="tab-content" id="add-tab">
+      <h2>Add Training Log</h2>
+      <form id="training-log-form" class="form-card">
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required value="2025-12-11">
+        </div>
+
+        <div class="form-group">
+          <label for="session">Training Session</label>
+          <select id="session" name="session" required>
+            <option value="Morning">Morning</option>
+            <option value="Midday">Midday</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+          </select>
+        </div>
+
+        <h3>Exercise</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="exercise-duration">Duration (minutes)</label>
+            <input type="number" id="exercise-duration" name="exercise-duration" min="0">
+          </div>
+          <div class="form-group">
+            <label for="exercise-type">Type</label>
+            <input type="text" id="exercise-type" name="exercise-type" placeholder="e.g., Fetch, Walk, Run">
+          </div>
+          <div class="form-group">
+            <label for="energy-level">Energy Level After (1-10)</label>
+            <input type="number" id="energy-level" name="energy-level" min="1" max="10">
+          </div>
+        </div>
+
+        <h3>Task Training</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-name">Task</label>
+            <input type="text" id="task-name" name="task-name" placeholder="e.g., Deep Pressure Therapy">
+          </div>
+          <div class="form-group">
+            <label for="task-duration">Duration (minutes)</label>
+            <input type="number" id="task-duration" name="task-duration" min="0">
+          </div>
+          <div class="form-group">
+            <label for="task-success">Success Rate (%)</label>
+            <input type="number" id="task-success" name="task-success" min="0" max="100">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="task-challenges">Challenges</label>
+          <textarea id="task-challenges" name="task-challenges" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="task-breakthroughs">Breakthroughs</label>
+          <textarea id="task-breakthroughs" name="task-breakthroughs" rows="2"></textarea>
+        </div>
+
+        <h3>Gypsy's State</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="focus-level">Focus Level (1-10)</label>
+            <input type="number" id="focus-level" name="focus-level" min="1" max="10">
+          </div>
+          <div class="form-group">
+            <label for="gypsy-energy">Energy Level (1-10)</label>
+            <input type="number" id="gypsy-energy" name="gypsy-energy" min="1" max="10">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="What went well? What to work on? Training goal for tomorrow?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">Save Training Log</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Gypsy Service Dog Training | Personal Training Tracker</p>
+    <p class="footer-tagline">Semper Fi • Building an exceptional service dog team 🐕‍🦺</p>
+  </div>
+</footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/training-log.js"></script>
+</body>
+</html>
