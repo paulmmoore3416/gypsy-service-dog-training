@@ -1,0 +1,40 @@
+<nav class="main-nav">
+  <ul class="nav-list">
+    <li class="nav-item <%= page === 'dashboard' ? 'active' : '' %>">
+      <a href="/">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'guide' ? 'active' : '' %>">
+      <a href="/guide/introduction">
+        <span class="nav-icon">📖</span>
+        <span>Training Guide</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'training-log' ? 'active' : '' %>">
+      <a href="/training-log">
+        <span class="nav-icon">📝</span>
+        <span>Training Logs</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'tasks' ? 'active' : '' %>">
+      <a href="/tasks">
+        <span class="nav-icon">✅</span>
+        <span>Tasks</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'milestones' ? 'active' : '' %>">
+      <a href="/milestones">
+        <span class="nav-icon">🎯</span>
+        <span>Milestones</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'resources' ? 'active' : '' %>">
+      <a href="/resources">
+        <span class="nav-icon">🔗</span>
+        <span>Resources</span>
+      </a>
+    </li>
+  </ul>
+</nav>

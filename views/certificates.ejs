@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Certificates - Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/certificates.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <%- include('partials/nav-enhanced') %>
+
+  <main class="container">
+    <h1>🏆 Training Certificates</h1>
+    <p class="subtitle">Generate and print professional certificates for milestone achievements</p>
+
+    <section class="certificate-options">
+      <div class="cert-grid">
+        <article class="cert-option">
+          <div class="cert-icon">📜</div>
+          <h3>Phase Completion Certificate</h3>
+          <p>Award certificate for completing each training phase</p>
+          <select id="phase-select" class="cert-select">
+            <option value="">Select Phase</option>
+            <option value="foundation">Foundation Obedience</option>
+            <option value="advanced">Advanced Obedience</option>
+            <option value="task">Task Training</option>
+            <option value="public">Public Access</option>
+          </select>
+          <button class="btn btn-primary" onclick="generatePhaseCert()">Generate Certificate</button>
+        </article>
+
+        <article class="cert-option">
+          <div class="cert-icon">⭐</div>
+          <h3>Task Mastery Certificate</h3>
+          <p>Certificate for mastering specific service dog tasks</p>
+          <select id="task-select" class="cert-select">
+            <option value="">Select Task</option>
+            <% data.tasks.filter(t => t.status === 'completed').forEach(task => { %>
+              <option value="<%= task.name %>"><%= task.name %></option>
+            <% }); %>
+          </select>
+          <button class="btn btn-primary" onclick="generateTaskCert()">Generate Certificate</button>
+        </article>
+
+        <article class="cert-option">
+          <div class="cert-icon">🎓</div>
+          <h3>Service Dog Graduation</h3>
+          <p>Official graduation certificate for full service dog status</p>
+          <button class="btn btn-primary" onclick="generateGraduationCert()">Generate Certificate</button>
+        </article>
+
+        <article class="cert-option">
+          <div class="cert-icon">📅</div>
+          <h3>Training Milestone</h3>
+          <p>Custom certificate for special achievements</p>
+          <input type="text" id="custom-achievement" class="cert-input" placeholder="Achievement name">
+          <button class="btn btn-primary" onclick="generateCustomCert()">Generate Certificate</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Certificate Preview -->
+    <section id="cert-preview" class="cert-preview" style="display: none;">
+      <h2>Certificate Preview</h2>
+      <div class="cert-actions">
+        <button class="btn btn-primary" onclick="printCertificate()">🖨️ Print Certificate</button>
+        <button class="btn btn-secondary" onclick="saveCertificatePDF()">💾 Save as PDF</button>
+        <button class="btn btn-secondary" onclick="closeCertificate()">✖ Close</button>
+      </div>
+      <div id="certificate-container"></div>
+    </section>
+
+    <!-- Past Certificates -->
+    <section class="past-certificates">
+      <h2>Generated Certificates</h2>
+      <div id="past-certs-list" class="past-certs-grid">
+        <p class="empty-state">No certificates generated yet. Create your first one above!</p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/certificates.js"></script>
+</body>
+</html>

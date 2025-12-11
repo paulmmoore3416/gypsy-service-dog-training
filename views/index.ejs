@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <%- include('partials/nav-enhanced') %>
+
+  <main class="container">
+    <section class="hero">
+      <h1>🐕 Gypsy's Service Dog Journey</h1>
+      <p class="subtitle">Blue Nose Pitbull • 18 Months • Marine Corps Veteran Service Dog in Training</p>
+    </section>
+
+    <section class="dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-content">
+            <h3>Training Logs</h3>
+            <p class="stat-number"><%= data.trainingLogs.length %></p>
+            <a href="/training-log" class="stat-link">View Logs →</a>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-content">
+            <h3>Active Tasks</h3>
+            <p class="stat-number"><%= data.tasks.filter(t => t.status !== 'completed').length %></p>
+            <a href="/tasks" class="stat-link">Manage Tasks →</a>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-content">
+            <h3>Milestones</h3>
+            <p class="stat-number"><%= data.milestones.filter(m => m.completed).length %></p>
+            <a href="/milestones" class="stat-link">Track Progress →</a>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-content">
+            <h3>Weekly Reports</h3>
+            <p class="stat-number"><%= data.weeklyReports.length %></p>
+            <a href="/training-log#weekly" class="stat-link">View Reports →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <h2>Training Progress</h2>
+        <div class="progress-phases">
+          <div class="phase">
+            <div class="phase-header">
+              <h3>Foundation Phase (Weeks 1-8)</h3>
+              <span class="phase-percentage"><%= data.progressData.foundationPhase %>%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: <%= data.progressData.foundationPhase %>%"></div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-header">
+              <h3>Advanced Obedience (Weeks 9-16)</h3>
+              <span class="phase-percentage"><%= data.progressData.advancedObedience %>%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: <%= data.progressData.advancedObedience %>%"></div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-header">
+              <h3>Task Training (Weeks 17-28)</h3>
+              <span class="phase-percentage"><%= data.progressData.taskTraining %>%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: <%= data.progressData.taskTraining %>%"></div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-header">
+              <h3>Public Access (Weeks 29-40)</h3>
+              <span class="phase-percentage"><%= data.progressData.publicAccess %>%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: <%= data.progressData.publicAccess %>%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-grid">
+          <a href="/training-log" class="action-btn">
+            <span class="btn-icon">📝</span>
+            <span>Add Training Log</span>
+          </a>
+          <a href="/tasks" class="action-btn">
+            <span class="btn-icon">✅</span>
+            <span>Update Task Progress</span>
+          </a>
+          <a href="/guide/introduction" class="action-btn">
+            <span class="btn-icon">📖</span>
+            <span>Read Training Guide</span>
+          </a>
+          <a href="/resources" class="action-btn">
+            <span class="btn-icon">🔗</span>
+            <span>Access Resources</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <h2>Recent Training Logs</h2>
+        <% if (data.trainingLogs.length === 0) { %>
+          <p class="empty-state">No training logs yet. Start tracking Gypsy's progress!</p>
+        <% } else { %>
+          <div class="log-list">
+            <% data.trainingLogs.slice(0, 5).forEach(log => { %>
+              <div class="log-item">
+                <div class="log-date"><%= new Date(log.date).toLocaleDateString() %></div>
+                <div class="log-details">
+                  <strong><%= log.session %> Session</strong>
+                  <% if (log.exercise) { %>
+                    <p>Exercise: <%= log.exercise.duration %> min - <%= log.exercise.type %></p>
+                  <% } %>
+                  <% if (log.taskTraining) { %>
+                    <p>Task: <%= log.taskTraining.task %> (<%= log.taskTraining.successRate %>% success)</p>
+                  <% } %>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <a href="/training-log" class="view-all-link">View All Logs →</a>
+        <% } %>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

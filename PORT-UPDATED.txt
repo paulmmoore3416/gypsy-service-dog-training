@@ -1,0 +1,20 @@
+✅ PORT UPDATED TO 3500
+
+The application has been configured to use port 3500 instead of port 3000.
+
+To start the application:
+-----------------------
+cd /home/paul/Documents/Articles/gypsy-training-app
+npm start
+
+Then open your browser to:
+http://localhost:3500
+
+All documentation has been updated to reflect this change:
+- server.js (PORT = 3500)
+- README.md
+- QUICK-START.md
+- PROJECT-SUMMARY.md
+- verify-installation.sh
+
+Ready to run!

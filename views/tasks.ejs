@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Training - Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <%- include('partials/nav-enhanced') %>
+
+  <main class="container">
+    <h1>🎯 Service Dog Tasks</h1>
+
+    <div class="task-overview">
+      <p>Track Gypsy's progress on specific service dog tasks. Choose 3-5 tasks that directly mitigate your disability-related challenges.</p>
+    </div>
+
+    <button class="btn btn-primary" onclick="showAddTaskForm()">+ Add New Task</button>
+
+    <div id="add-task-form" class="form-card" style="display: none;">
+      <h2>Add New Task</h2>
+      <form id="task-form">
+        <div class="form-group">
+          <label for="task-name">Task Name</label>
+          <input type="text" id="task-name" name="task-name" required placeholder="e.g., Deep Pressure Therapy">
+        </div>
+
+        <div class="form-group">
+          <label for="task-description">Description</label>
+          <textarea id="task-description" name="task-description" rows="3" placeholder="What does this task do? How does it help?"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-difficulty">Difficulty</label>
+            <select id="task-difficulty" name="task-difficulty">
+              <option value="Low">Low</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-start-date">Start Date</label>
+            <input type="date" id="task-start-date" name="task-start-date" value="<%= new Date().toISOString().split('T')[0] %>">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="task-notes">Training Notes</label>
+          <textarea id="task-notes" name="task-notes" rows="3" placeholder="Training approach, key steps, etc."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Task</button>
+          <button type="button" class="btn btn-secondary" onclick="hideAddTaskForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="tasks-grid">
+      <% if (data.tasks.length === 0) { %>
+        <div class="empty-state">
+          <p>🎯 No tasks yet!</p>
+          <p>Add tasks that Gypsy needs to learn to become your service dog.</p>
+        </div>
+      <% } else { %>
+        <% ['not-started', 'in-progress', 'completed'].forEach(status => { %>
+          <% const statusTasks = data.tasks.filter(t => t.status === status); %>
+          <% if (statusTasks.length > 0 || status === 'in-progress') { %>
+            <div class="task-column">
+              <h2 class="column-header <%= status %>">
+                <% if (status === 'not-started') { %>
+                  📋 Not Started
+                <% } else if (status === 'in-progress') { %>
+                  🔄 In Progress
+                <% } else { %>
+                  ✅ Completed
+                <% } %>
+                <span class="task-count">(<%= statusTasks.length %>)</span>
+              </h2>
+
+              <% statusTasks.forEach(task => { %>
+                <div class="task-card" data-task-id="<%= task.id %>">
+                  <div class="task-header">
+                    <h3><%= task.name %></h3>
+                    <span class="difficulty-badge <%= task.difficulty.toLowerCase() %>"><%= task.difficulty %></span>
+                  </div>
+
+                  <% if (task.description) { %>
+                    <p class="task-description"><%= task.description %></p>
+                  <% } %>
+
+                  <div class="task-progress">
+                    <label>Progress: <%= task.progress || 0 %>%</label>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: <%= task.progress || 0 %>%"></div>
+                    </div>
+                    <input type="range" min="0" max="100" value="<%= task.progress || 0 %>"
+                           onchange="updateTaskProgress(<%= task.id %>, this.value)"
+                           class="progress-slider">
+                  </div>
+
+                  <% if (task.startDate) { %>
+                    <p class="task-meta">Started: <%= new Date(task.startDate).toLocaleDateString() %></p>
+                  <% } %>
+
+                  <% if (task.notes) { %>
+                    <div class="task-notes">
+                      <strong>Notes:</strong>
+                      <p><%= task.notes %></p>
+                    </div>
+                  <% } %>
+
+                  <div class="task-actions">
+                    <select onchange="updateTaskStatus(<%= task.id %>, this.value)" class="status-select">
+                      <option value="not-started" <%= task.status === 'not-started' ? 'selected' : '' %>>Not Started</option>
+                      <option value="in-progress" <%= task.status === 'in-progress' ? 'selected' : '' %>>In Progress</option>
+                      <option value="completed" <%= task.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                    </select>
+                    <button class="btn-icon" onclick="deleteTask(<%= task.id %>)" title="Delete Task">🗑️</button>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <% } %>
+        <% }) %>
+      <% } %>
+    </div>
+
+    <div class="suggested-tasks">
+      <h2>💡 Suggested Veteran Service Dog Tasks</h2>
+      <p>Click on a task to learn more and add it to your training plan:</p>
+
+      <div class="suggestions-grid">
+        <div class="suggestion-card" onclick="addSuggestedTask('Deep Pressure Therapy', 'Moderate')">
+          <h4>Deep Pressure Therapy (DPT)</h4>
+          <p>Alleviates anxiety and panic attacks through calming pressure</p>
+          <span class="difficulty-badge moderate">Moderate</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Nightmare Interruption', 'Moderate')">
+          <h4>Nightmare Interruption</h4>
+          <p>Wakes handler from nightmares and night terrors</p>
+          <span class="difficulty-badge moderate">Moderate</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Crowd Control', 'Moderate')">
+          <h4>Crowd Control / Space Buffer</h4>
+          <p>Creates physical barrier between handler and strangers</p>
+          <span class="difficulty-badge moderate">Moderate</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Room Clearing', 'Advanced')">
+          <h4>Room Clearing / Watch My Back</h4>
+          <p>Checks rooms and spaces for threats before entry</p>
+          <span class="difficulty-badge advanced">Advanced</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Grounding', 'Low')">
+          <h4>Tactile Grounding</h4>
+          <p>Provides anchoring stimulus during dissociation or flashbacks</p>
+          <span class="difficulty-badge low">Low</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Medication Reminder', 'Advanced')">
+          <h4>Medication Reminder</h4>
+          <p>Alerts at scheduled times to take medication</p>
+          <span class="difficulty-badge advanced">Advanced</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Mobility Support', 'Advanced')">
+          <h4>Mobility Support / Balance</h4>
+          <p>Provides counterbalance and bracing assistance</p>
+          <span class="difficulty-badge advanced">Advanced</span>
+        </div>
+
+        <div class="suggestion-card" onclick="addSuggestedTask('Item Retrieval', 'Moderate')">
+          <h4>Retrieve / Fetch Items</h4>
+          <p>Brings medication, phone, keys, or dropped objects</p>
+          <span class="difficulty-badge moderate">Moderate</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/tasks.js"></script>
+</body>
+</html>

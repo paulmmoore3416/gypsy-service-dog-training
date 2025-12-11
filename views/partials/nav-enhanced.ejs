@@ -1,0 +1,52 @@
+<nav class="main-nav">
+  <ul class="nav-list">
+    <li class="nav-item <%= page === 'dashboard' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/index.html">
+        <span class="nav-icon">🏠</span>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'guide' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/guide/introduction.html">
+        <span class="nav-icon">📖</span>
+        <span>Training Guide</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'training-log' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/training-log.html">
+        <span class="nav-icon">📝</span>
+        <span>Training Logs</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'tasks' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/tasks.html">
+        <span class="nav-icon">✅</span>
+        <span>Tasks</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'milestones' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/milestones.html">
+        <span class="nav-icon">🎯</span>
+        <span>Milestones</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'analytics' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/analytics.html">
+        <span class="nav-icon">📊</span>
+        <span>Analytics</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'certificates' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/certificates.html">
+        <span class="nav-icon">🏆</span>
+        <span>Certificates</span>
+      </a>
+    </li>
+    <li class="nav-item <%= page === 'resources' ? 'active' : '' %>">
+      <a href="<%= typeof baseUrl !== 'undefined' ? baseUrl : '' %>/resources.html">
+        <span class="nav-icon">🔗</span>
+        <span>Resources</span>
+      </a>
+    </li>
+  </ul>
+</nav>

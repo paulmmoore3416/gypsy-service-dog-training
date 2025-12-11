@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Guide - Gypsy Service Dog Training</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <%- include('partials/nav-enhanced') %>
+
+  <main class="container guide-container">
+    <div class="guide-layout">
+      <aside class="guide-sidebar">
+        <h3>Guide Sections</h3>
+        <ul class="guide-toc">
+          <li><a href="/guide/introduction" class="<%= section === 'introduction' ? 'active' : '' %>">Introduction & Legal Framework</a></li>
+          <li><a href="/guide/understanding-pitbull" class="<%= section === 'understanding-pitbull' ? 'active' : '' %>">Understanding Your Blue Nose Pitbull</a></li>
+          <li><a href="/guide/requirements" class="<%= section === 'requirements' ? 'active' : '' %>">Service Dog Requirements</a></li>
+          <li><a href="/guide/foundation" class="<%= section === 'foundation' ? 'active' : '' %>">Phase 1: Foundation Obedience</a></li>
+          <li><a href="/guide/advanced" class="<%= section === 'advanced' ? 'active' : '' %>">Phase 2: Advanced Obedience</a></li>
+          <li><a href="/guide/task-training" class="<%= section === 'task-training' ? 'active' : '' %>">Phase 3: Task-Specific Training</a></li>
+          <li><a href="/guide/public-access" class="<%= section === 'public-access' ? 'active' : '' %>">Phase 4: Public Access Training</a></li>
+          <li><a href="/guide/veteran-tasks" class="<%= section === 'veteran-tasks' ? 'active' : '' %>">Veteran-Specific Tasks</a></li>
+          <li><a href="/guide/behavioral" class="<%= section === 'behavioral' ? 'active' : '' %>">Behavioral Challenges</a></li>
+          <li><a href="/guide/schedule" class="<%= section === 'schedule' ? 'active' : '' %>">Training Schedule</a></li>
+
+          <li class="toc-divider">Enhancement Additions</li>
+          <li><a href="/guide/training-log-system" class="<%= section === 'training-log-system' ? 'active' : '' %>">Enhancement #1: Training Log</a></li>
+          <li><a href="/guide/motivation" class="<%= section === 'motivation' ? 'active' : '' %>">Enhancement #2: Motivation Techniques</a></li>
+          <li><a href="/guide/task-matrix" class="<%= section === 'task-matrix' ? 'active' : '' %>">Enhancement #3: Task Matrix</a></li>
+          <li><a href="/guide/distraction-proofing" class="<%= section === 'distraction-proofing' ? 'active' : '' %>">Enhancement #4: Distraction Proofing</a></li>
+          <li><a href="/guide/emergency" class="<%= section === 'emergency' ? 'active' : '' %>">Enhancement #5: Emergency Response</a></li>
+          <li><a href="/guide/heat-cycle" class="<%= section === 'heat-cycle' ? 'active' : '' %>">Enhancement #6: Heat Cycle Management</a></li>
+          <li><a href="/guide/community" class="<%= section === 'community' ? 'active' : '' %>">Enhancement #7: Community Integration</a></li>
+          <li><a href="/guide/resources-guide" class="<%= section === 'resources-guide' ? 'active' : '' %>">Enhancement #8: Lifetime Support</a></li>
+        </ul>
+      </aside>
+
+      <article class="guide-content">
+        <%- include('guide-sections/' + section) %>
+      </article>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>
